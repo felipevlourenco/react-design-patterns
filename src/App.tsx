@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import SplitScreen from './components/SplitScreen'
+import './App.css'
 
-function App() {
+const LeftHandComponent = ({ message }: { message: string }) => (
+  <h1 style={{ backgroundColor: 'red' }}>{message}</h1>
+)
+const RightHandComponent = () => (
+  <h3 style={{ backgroundColor: 'green' }}>Right</h3>
+)
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <SplitScreen leftWeight={1} rightWeight={3}>
+        <LeftHandComponent message="test message que não cabe no espaço" />
+        <RightHandComponent />
+      </SplitScreen>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
